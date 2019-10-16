@@ -25,11 +25,14 @@ mongoose.connect(db, {
 
 //middlewares
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json())
-app.use(morgan('dev'))
+app.use(express.json());
+
+
 //static files
 app.use(express.static(config.static));
-app.use(routes)
+//routes
+app.use(routes);
+app.use(morgan('dev'));
 
 //Inizialization
 app.listen(port,()=>console.log(`Server runing in the port ${port}`));

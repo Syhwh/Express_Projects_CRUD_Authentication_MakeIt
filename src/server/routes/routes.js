@@ -3,11 +3,18 @@ const router = Router();
 //import the model
 const Project = require('../database/models/projectsSchema');
 
-router.get('/',async (req, res) => {
-    const projects= await Project.find();
-    res.sendFile('index').json({projects})
-
+router.get('/info', async (req, res, next) => {
+    try {
+        const projects = await Project.find();
+        res.json(projects);
+    } catch (error) {
+        return next(error)
+    }
 });
+
+router.get('/',(req,res)=>{
+    res.sendFile('index')
+})
 
 router.post('/projects', async (req, res, next) => {
     const data = {
@@ -24,4 +31,4 @@ router.post('/projects', async (req, res, next) => {
     res.redirect("/");
 });
 
-module.exports=router;
+module.exports = router;
