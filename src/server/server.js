@@ -13,7 +13,7 @@ const routes = require('./routes/routes');
 const app = express();
 
 //Database
-mongoose.connect(config.mongoose.db, {
+mongoose.connect(db, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useCreateIndex: true
@@ -25,10 +25,11 @@ mongoose.connect(config.mongoose.db, {
 
 //middlewares
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json())
 app.use(morgan('dev'))
 //static files
 app.use(express.static(config.static));
-
+app.use(routes)
 
 //Inizialization
 app.listen(port,()=>console.log(`Server runing in the port ${port}`));
