@@ -1,0 +1,28 @@
+{
+  "name": "express_projects_crud_authentincation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon src/server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Syhwh/Express_Projects_CRUD_Authentincation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Syhwh/Express_Projects_CRUD_Authentincation/issues"
+  },
+  "homepage": "https://github.com/Syhwh/Express_Projects_CRUD_Authentincation#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.7.5"
+  },
+  "devDependencies": {
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.4"
+  }
+}
