@@ -6,29 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <h1>App Works</h1>
-    <div>
-        <form action="/projects" method="POST">
-            <div>
-                <label for="projectName">Project Name</label>
-                <input type="text" name="projectTitle" placeholder="Enter the project title ">
-            </div>
-            <div>
+    <div class="container">
+        <div class="row">
+            <div class="col6">
                 <div>
-                    <label for="projectName">Project Description</label>
+                    <form action="/projects" method="POST">
+                        <div class="form-group">
+                            <label for="projectName">Project Name</label>
+                            <input type="text" name="projectTitle" class="form-control"
+                                placeholder="Enter the project title ">
+                        </div>
+                        <div class="form-group">
+                            <label for="projectName">Project Description</label>
+                            <textarea name="projectDescription" id="" rows="10" class="form-control"
+                                placeholder="Enter the project description "></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send the project</button>
+                    </form>
                 </div>
-
-                <textarea name="projectDescription" id="" rows="10"
-                    placeholder="Enter the project description "></textarea>
-
             </div>
-            <button type="submit">Send the project</button>
-        </form>
+            <div class="col-6">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody id='tableData'>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="js/index.js"></script>
 </body>
 
