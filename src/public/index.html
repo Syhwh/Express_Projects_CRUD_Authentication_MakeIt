@@ -8,32 +8,34 @@
     <title>Projects</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+    <nav class="navbar navbar-dark bg-dark">
+        <span class="navbar-brand mb-0 h1">Projects</span>
+        <button class="btn btn-sm btn-outline-secondary" type="button" id='logout' >Logout</button>
+    </nav>
     <div class="container">
-        <div class="row">
-            <div id="login" class="col-12">
+        <div class="row d-flex justify-content-center">
+                <div id="alerts"></div>
+            <div id="login" class="col-8 mt-3">                
                 <form id="loginUser">
                     <div class="form-group">
                         <label for="loginUserEmail">User Email</label>
-                        <input type="text" name="userEmail" id="loginUserEmail" class="form-control"
-                            placeholder="Enter your email "></input>
+                        <input tabindex="0" type="text" name="userEmail" id="loginUserEmail" class="form-control"  placeholder="Enter your email "></input>
                     </div>
                     <div class="form-group">
                         <label for="loginUserPassword">User Email</label>
                         <input type="password" name="loginUserPassword" id="loginUserPassword" class="form-control"
                             placeholder="Enter your password "></input>
                     </div>
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="submit" class="btn btn-primary" >Login</button>
                 </form>
                 <a href="#" id="goToRegister">doesn't have an account?</a>
             </div>
-            <div id="register" class="col-12">
+            <div id="register" class="col-8">
                 <form id="registerUser">
                     <div class="form-group">
                         <label for="userName">User Name</label>
@@ -54,8 +56,9 @@
                 </form>
                 <a href="#" id="goToLogin">already have an accouount?</a>
             </div>
-            
-            <div id="projects" class="col-12 justify-content-around">
+
+            <div id="projects" class="col-12 align-content-center">
+                   
             <div class="col-5">              
                     <form id="createProject">
                         <div class="form-group">
@@ -84,8 +87,6 @@
                         </tr>
                     </thead>
                     <tbody id='tableData'>
-
-
                     </tbody>
                 </table>
             </div>
@@ -93,10 +94,11 @@
         </div>
     </div>
 
-
-    <script src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <script src="js/index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+<script src="js/index.js"></script>
 </body>
 
 </html>

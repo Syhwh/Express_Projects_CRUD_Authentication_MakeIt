@@ -12,7 +12,7 @@ userRouter.post('/users/register', async (req, res, next) => {
     }
     try {
         const user = await User.create(userData)      
-        res.json(user);
+        res.status(200).json({message:'User created'});
     } catch (err) {
         if (err.name === "ValidationError") {
             res.status(422).json({ errors: err.errors });
@@ -33,7 +33,7 @@ userRouter.post('/users/login', async (req, res, next) => {
         } else {
             res.status(401).send({ error: 'Wrong email or password. Try again!' });
         }
-    } catch (error) {
+    } catch (err) {
         if (err.name === "ValidationError") {
             res.status(422).json({ errors: err.errors });
         } else {
@@ -41,5 +41,10 @@ userRouter.post('/users/login', async (req, res, next) => {
         }
     }
 });
+
+userRouter.post('/users/logout',async(req, res, next)=>{
+    req.session.userId=null;
+    res.status(200).send({message:'user logged out'});
+})
 
 module.exports = userRouter;
