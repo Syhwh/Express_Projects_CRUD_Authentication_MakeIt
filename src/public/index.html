@@ -5,39 +5,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>Projects</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <div class="container">
         <div class="row">
-            <div class="col6">
-                <div>
-                    <form action="/projects" method="POST">
+            <div id="login" class="col-12">
+                <form id="loginUser">
+                    <div class="form-group">
+                        <label for="loginUserEmail">User Email</label>
+                        <input type="text" name="userEmail" id="loginUserEmail" class="form-control"
+                            placeholder="Enter your email "></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginUserPassword">User Email</label>
+                        <input type="password" name="loginUserPassword" id="loginUserPassword" class="form-control"
+                            placeholder="Enter your password "></input>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+                <a href="#" id="goToRegister">doesn't have an account?</a>
+            </div>
+            <div id="register" class="col-12">
+                <form id="registerUser">
+                    <div class="form-group">
+                        <label for="userName">User Name</label>
+                        <input type="text" name="userName" id="userName" class="form-control"
+                            placeholder="Enter your Name ">
+                    </div>
+                    <div class="form-group">
+                        <label for="userEmail">User Email</label>
+                        <input type="text" name="userEmail" id="userEmail" class="form-control"
+                            placeholder="Enter your email "></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="userPassword">User Email</label>
+                        <input type="password" name="userPassword" id="userPassword" class="form-control"
+                            placeholder="Enter your password "></input>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+                <a href="#" id="goToLogin">already have an accouount?</a>
+            </div>
+            
+            <div id="projects" class="col-12 justify-content-around">
+            <div class="col-5">              
+                    <form id="createProject">
                         <div class="form-group">
                             <label for="projectName">Project Name</label>
-                            <input type="text" name="projectTitle" class="form-control"
+                            <input type="text" name="projectTitle" id="projectName" class="form-control"
                                 placeholder="Enter the project title ">
                         </div>
                         <div class="form-group">
-                            <label for="projectName">Project Description</label>
-                            <textarea name="projectDescription" id="" rows="10" class="form-control"
+                            <label for="projectDescription">Project Description</label>
+                            <textarea name="projectDescription" id="projectDescription" rows="10" class="form-control"
                                 placeholder="Enter the project description "></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Send the project</button>
-                    </form>
-                </div>
+                    </form>               
             </div>
-            <div class="col-6">
+            <div class="col-5">
                 <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Title</th>
                             <th scope="col">Description</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+
                         </tr>
                     </thead>
                     <tbody id='tableData'>
@@ -46,6 +89,7 @@
                     </tbody>
                 </table>
             </div>
+            </div>  
         </div>
     </div>
 
