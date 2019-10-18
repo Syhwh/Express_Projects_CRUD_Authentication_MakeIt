@@ -8,9 +8,8 @@ const Project = require('../database/models/projectSchema');
 
 // required user middleware
 const requireUser = (req, res, next) => {
-
     if (!res.locals.user) {
-        return res.send('user Not found');
+        return res.status(401).send('user Not found');
     }
     next();
 }
@@ -23,7 +22,7 @@ router.get('/',  (req, res) => {
 router.get('/projects',requireUser ,async (req, res, next) => {
     try {
         const projects = await Project.find({ user: res.locals.user});
-        res.json(projects);
+        res.status(200).json(projects);
     } catch (error) {
         return next(error)
     }
@@ -39,7 +38,7 @@ router.post('/projects/add',requireUser ,async (req, res, next) => {
     try {
         const project = new Project(data);
         await project.save();
-        res.json(project);
+        res.status(200).json(project);
     } catch (err) {
         if (err.name === "ValidationError") {
             res.status(422).json({ errors: err.errors });
@@ -53,7 +52,7 @@ router.get('/projects/delete/:id', requireUser,async (req, res, next) => {
     try {
         const { id } = req.params;
         await Project.deleteOne({ _id: id });
-        res.redirect("/");
+        res.sendStatus(200);
     } catch (error) {
         return next(error)
     }

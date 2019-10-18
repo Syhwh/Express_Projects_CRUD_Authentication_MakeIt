@@ -2,24 +2,23 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const cookieSession = require('cookie-session');
+
 //Config files
 const config = require('./config/config');
 const port = config.port;
 const db = config.mongoose.db;
 //Model
 const User = require('./database/models/userSchema');
+
 //Routes
 const routes = require('./routes/routes');
 const authRoutes = require('./routes/authRoutes');
+
 // application
 const app = express();
 
 //Database
-mongoose.connect(db, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-    useCreateIndex: true
-})
+mongoose.connect(config.mongoose.dbDev,config.mongoose.options)
     .then(() => console.log('DB Connected!'))
     .catch(err => {
         console.log(`DB Connection Error: ${err.message}`);

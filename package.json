@@ -4,7 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon src/server/server.js"
+    "start": "nodemon src/server/server.js",
+    "test": "jest src/server/test --forceExit --verbose=false"   
+       
+      
   },
   "repository": {
     "type": "git",
@@ -24,7 +27,10 @@
     "mongoose": "^5.7.5"
   },
   "devDependencies": {
+    "jest": "^24.9.0",
     "morgan": "^1.9.1",
-    "nodemon": "^1.19.4"
+    "nodemon": "^1.19.4",
+    "superagent": "^5.1.0",
+    "supertest": "^4.0.2"
   }
 }
