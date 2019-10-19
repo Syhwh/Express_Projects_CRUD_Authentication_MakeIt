@@ -4,10 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon src/server/server.js",
-    "test": "jest src/server/test --forceExit --verbose=false"   
-       
-      
+    "start": "node src/server/server.js",
+    "test": "cross-env NODE_ENV=testing jest src/server/test --forceExit --verbose=false",
+    "dev": "cross-env NODE_ENV=development nodemon src/server/server.js"
   },
   "repository": {
     "type": "git",
@@ -23,10 +22,13 @@
   "dependencies": {
     "bcrypt": "^3.0.6",
     "cookie-session": "^1.3.3",
+    "custom-env": "^1.0.2",
     "express": "^4.17.1",
     "mongoose": "^5.7.5"
   },
   "devDependencies": {
+    "cross-env": "^6.0.3",
+    "dotenv": "^8.2.0",
     "jest": "^24.9.0",
     "morgan": "^1.9.1",
     "nodemon": "^1.19.4",

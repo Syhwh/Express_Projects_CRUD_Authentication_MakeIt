@@ -31,8 +31,7 @@ router.get('/projects',requireUser ,async (req, res, next) => {
 router.post('/projects/add',requireUser ,async (req, res, next) => {
     const data = {
         title: req.body.projectTitle,
-        description: req.body.projectDescription,
-        date: Date.now(),
+        description: req.body.projectDescription,        
         user: res.locals.user
     }
     try {

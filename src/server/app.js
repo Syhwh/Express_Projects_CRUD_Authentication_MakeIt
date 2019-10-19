@@ -1,12 +1,17 @@
+
+if (process.env.NODE_ENV == 'testing') {
+    require('custom-env').env('testing');
+} else{
+    require('dotenv').config();
+}
+
 const express = require('express');
-const mongoose = require('mongoose');
 const morgan = require('morgan');
 const cookieSession = require('cookie-session');
 
 //Config files
 const config = require('./config/config');
-const port = config.port;
-const db = config.mongoose.db;
+
 //Model
 const User = require('./database/models/userSchema');
 
@@ -18,11 +23,7 @@ const authRoutes = require('./routes/authRoutes');
 const app = express();
 
 //Database
-mongoose.connect(config.mongoose.dbDev,config.mongoose.options)
-    .then(() => console.log('DB Connected!'))
-    .catch(err => {
-        console.log(`DB Connection Error: ${err.message}`);
-    });
+require('./database/database');
 
 //middlewares
 app.use(express.urlencoded({ extended: true }));
@@ -53,6 +54,6 @@ app.use(morgan('dev'));
 app.use((err, req, res, next) => {
     console.log(err);
     res.status(500).json({ error: err.message });
-  });
+});
 
-  module.exports=app;
+module.exports = app;
