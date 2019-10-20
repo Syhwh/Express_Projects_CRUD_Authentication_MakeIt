@@ -1,9 +1,18 @@
-#register{
+#register,#projects,#createProject,#editProject,#logout,#newProject{
     display:none;
 }
-#projects{
-    display:none;
-}
-#logout{
-    display:none;
+
+#sidebar{
+    height: 100%; 
+    width: 180px; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    background-color: #777; /* Black */   
+    padding-top: 20px;
+  }
+
+img{
+    width: 50%;
+    height: 50%;
 }

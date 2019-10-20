@@ -2,103 +2,191 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Projects</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Projects</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark">
-        <span class="navbar-brand mb-0 h1">Projects</span>
-        <button class="btn btn-sm btn-outline-secondary" type="button" id='logout' >Logout</button>
-    </nav>
-    <div class="container">
-        <div class="row d-flex justify-content-center">
-                <div id="alerts"></div>
-            <div id="login" class="col-8 mt-3">                
-                <form id="loginUser">
-                    <div class="form-group">
-                        <label for="loginUserEmail">User Email</label>
-                        <input tabindex="0" type="text" name="userEmail" id="loginUserEmail" class="form-control"  placeholder="Enter your email "></input>
-                    </div>
-                    <div class="form-group">
-                        <label for="loginUserPassword">User Email</label>
-                        <input type="password" name="loginUserPassword" id="loginUserPassword" class="form-control"
-                            placeholder="Enter your password "></input>
-                    </div>
-                    <button type="submit" class="btn btn-primary" >Login</button>
-                </form>
-                <a href="#" id="goToRegister">doesn't have an account?</a>
-            </div>
-            <div id="register" class="col-8">
-                <form id="registerUser">
-                    <div class="form-group">
-                        <label for="userName">User Name</label>
-                        <input type="text" name="userName" id="userName" class="form-control"
-                            placeholder="Enter your Name ">
-                    </div>
-                    <div class="form-group">
-                        <label for="userEmail">User Email</label>
-                        <input type="text" name="userEmail" id="userEmail" class="form-control"
-                            placeholder="Enter your email "></input>
-                    </div>
-                    <div class="form-group">
-                        <label for="userPassword">User Email</label>
-                        <input type="password" name="userPassword" id="userPassword" class="form-control"
-                            placeholder="Enter your password "></input>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Register</button>
-                </form>
-                <a href="#" id="goToLogin">already have an accouount?</a>
-            </div>
+  <nav class="navbar navbar-dark bg-dark">
+    <span class="navbar-brand mb-0 h1">Projects</span>
 
-            <div id="projects" class="col-12 align-content-center">
-                   
-            <div class="col-5">              
-                    <form id="createProject">
-                        <div class="form-group">
-                            <label for="projectName">Project Name</label>
-                            <input type="text" name="projectTitle" id="projectName" class="form-control"
-                                placeholder="Enter the project title ">
-                        </div>
-                        <div class="form-group">
-                            <label for="projectDescription">Project Description</label>
-                            <textarea name="projectDescription" id="projectDescription" rows="10" class="form-control"
-                                placeholder="Enter the project description "></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send the project</button>
-                    </form>               
-            </div>
-            <div class="col-5">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Edit</th>
-                            <th scope="col">Delete</th>
+  </nav>
 
-                        </tr>
-                    </thead>
-                    <tbody id='tableData'>
-                    </tbody>
-                </table>
-            </div>
-            </div>  
-        </div>
+  <!-- SIDEBAR-->
+
+  <nav id="sidebar" class="d-flex flex-column align-items-center">
+    <div class="sidebar-header ">
+      <img src="./assets/userAvatar.png" alt="userAvatar">
+      <h3>FULL NAME</h3>
+      <strong>---</strong>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
-<script src="js/index.js"></script>
+    <ul class="list-unstyled components">
+      <li class="active">
+        <i class="fas fa-home"></i>
+        Total projects <span id='sbTotalProjects'></span>
+      </li>
+      <li class="active">
+        <i class="fas fa-home"></i>
+        Not started <span id='sbNotStarted' class="badge badge-pill badge-danger"></span>
+      </li>
+      <li class="active">
+        <i class="fas fa-home"></i>
+        In progress <span id='sbInProgress' class="badge badge-pill badge-warning"></span>
+      </li>
+      <li class="active">
+        <i class="fas fa-home"></i>
+        Done <span id='sbDone' class="badge badge-pill badge-success"></span>
+      </li>
+
+    </ul>
+    <button class="btn btn-sm btn-outline-secondary" type="button" id='logout'>Logout</button>
+  </nav>
+
+  <!--Close Sidebar-->
+
+
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div id="alerts"></div>
+      <div id="login" class="col-8 mt-3">
+        <form id="loginUser">
+          <div class="form-group">
+            <label for="loginUserEmail">User Email</label>
+            <input tabindex="0" type="text" name="userEmail" id="loginUserEmail" class="form-control"
+              placeholder="Enter your email "></input>
+          </div>
+          <div class="form-group">
+            <label for="loginUserPassword">User Email</label>
+            <input type="password" name="loginUserPassword" id="loginUserPassword" class="form-control"
+              placeholder="Enter your password "></input>
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        <a href="#" id="goToRegister">doesn't have an account?</a>
+      </div>
+      <div id="register" class="col-8 mt-3">
+        <form id="registerUser">
+          <div class="form-group ">
+            <label for="userName">User Name</label>
+            <input type="text" name="userName" id="userName" class="form-control" placeholder="Enter your Name ">
+          </div>
+          <div class="form-group">
+            <label for="userEmail">User Email</label>
+            <input type="text" name="userEmail" id="userEmail" class="form-control"
+              placeholder="Enter your email "></input>
+          </div>
+          <div class="form-group">
+            <label for="userPassword">User Password</label>
+            <input type="password" name="userPassword" id="userPassword" class="form-control"
+              placeholder="Enter your password "></input>
+          </div>
+          <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+        <a href="#" id="goToLogin">Do you have an account?</a>
+      </div>
+      <div class="col-6">
+        <button type="button" class='btn btn-primary' id='newProject'>Create a New Project</button>
+      </div>
+      <div class="col-10 align-content-center">
+        <div class="col-8 offset-3 mt-3 ">
+          <form id="createProject">
+            <div class="form-group mt-3">
+              <label for="projectName">Project Name</label>
+              <input type="text" name="projectTitle" id="projectName" class="form-control"
+                placeholder="Enter the project title ">
+            </div>
+            <div class="form-group">
+              <label for="projectDescription">Project Description</label>
+              <textarea name="projectDescription" id="projectDescription" rows="10" class="form-control"
+                placeholder="Enter the project description "></textarea>
+            </div>
+            <div>
+              <button type="submit" class="btn btn-primary">Create the project</button>
+              <button type="button" id='cancelCreate' class="btn btn-danger ">Cancel</button>
+
+            </div>
+          </form>
+
+          <form id="editProject">
+            <div class="form-group">
+              <label for="editProjectName">Project Name</label>
+              <input type="text" name="editProjectTitle" id="editProjectName" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="editProjectDescription">Project Description</label>
+              <textarea name="editProjectDescription" id="editProjectDescription" rows="10"
+                class="form-control"></textarea>
+            </div>
+            <div class="buttons">
+
+              <button type="button" id='' class="btn btn-success editButton">Edit the project</button>
+              <button type="button" id='cancelEdit' class="btn btn-danger ">Cancel</button>
+            </div>
+          </form>
+
+        </div>
+        <div id="projects" class=" col-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Date Created</th>
+                <th scope="col">Status</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody id='tableData'>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="deleteProjectModal" tabindex="-1" role="dialog" aria-labelledby="deleteProjectModal"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteProjectModal">Delete Project</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure?
+          <span class="text-muted">this action can't be undo </span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger deleteProject" id=''>Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <script src="js/index.js"></script>
 </body>
 
 </html>

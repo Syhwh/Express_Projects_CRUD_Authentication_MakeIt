@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node src/server/server.js",
-    "test": "cross-env NODE_ENV=testing jest src/server/test --forceExit --verbose=false",
+    "test": "cross-env NODE_ENV=testing jest src/server/test --forceExit --watch --verbose=false",
     "dev": "cross-env NODE_ENV=development nodemon src/server/server.js"
   },
   "repository": {
