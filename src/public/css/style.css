@@ -1,18 +1,56 @@
-#register,#projects,#createProject,#editProject,#logout,#newProject{
-    display:none;
+body {
+  font-family: 'lato', sans-serif;
+  font-size: 14px;  
+}
+.navbar{
+  background-color: #343a40!important ;
 }
 
-#sidebar{
-    height: 100%; 
-    width: 180px; 
-    position: fixed; 
-    z-index: 1; 
+#sidebar {   
+    color: antiquewhite;
+    height: 100%;
+    width: 180px;
+    position: fixed;
+    z-index: 1;
     left: 0;
-    background-color: #777; /* Black */   
-    padding-top: 20px;
+    background-color: #343a40ec; /* Black */
+    padding: 20px 0px;
+    font-size: 16px;  
   }
-
-img{
-    width: 50%;
+  
+  img {
+    width: 45%;
     height: 50%;
+  }
+  
+.list{
+  list-style-type: none;
+  padding: 0;
 }
+.projectInfo{
+    padding: 15px 0px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.sidebar-body{
+  padding: 0px;
+  display:flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.projectActions{
+  font-size: 16px;
+}
+
+#register,
+#projects,
+#createProject,
+#editProject,
+#logout,
+#newProject,
+#sidebar {
+  display: none;
+}
+

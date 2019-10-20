@@ -13,6 +13,7 @@ const countDocuments = async (user) => {
   const done = await Project.countDocuments({ user, status: 'Done' });
 
   const countProjects = {
+    user:user.name,
     total,
     notStarted,
     inProgress,
@@ -42,7 +43,7 @@ router.get('/', (req, res) => {
 router.get('/projects', requireUser, async (req, res, next) => {
   try {
     const response = await countDocuments(res.locals.user);
-    console.log('response in get' + response)
+    console.log('response in get user' + res.locals.user)
     res.status(200).json(response);
   } catch (error) {
     return next(error)

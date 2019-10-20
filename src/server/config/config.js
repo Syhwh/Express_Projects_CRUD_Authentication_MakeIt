@@ -13,7 +13,7 @@ const config = {
     cookieSession: {
         secret: 'secret Key',
         name: 'pjs_uid',
-        maxAge: 2 * 60 * 1000
+        maxAge: 3 * 60 * 1000
     },
 
 }

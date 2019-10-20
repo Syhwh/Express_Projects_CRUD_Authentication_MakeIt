@@ -6,54 +6,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Projects</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+  <!--link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sandstone/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
   <nav class="navbar navbar-dark bg-dark">
     <span class="navbar-brand mb-0 h1">Projects</span>
-
+    <button class="btn btn-sm btn-secondary" type="button" id='logout'>Logout</button>
   </nav>
-
-  <!-- SIDEBAR-->
-
-  <nav id="sidebar" class="d-flex flex-column align-items-center">
-    <div class="sidebar-header ">
-      <img src="./assets/userAvatar.png" alt="userAvatar">
-      <h3>FULL NAME</h3>
-      <strong>---</strong>
-    </div>
-
-    <ul class="list-unstyled components">
-      <li class="active">
-        <i class="fas fa-home"></i>
-        Total projects <span id='sbTotalProjects'></span>
-      </li>
-      <li class="active">
-        <i class="fas fa-home"></i>
-        Not started <span id='sbNotStarted' class="badge badge-pill badge-danger"></span>
-      </li>
-      <li class="active">
-        <i class="fas fa-home"></i>
-        In progress <span id='sbInProgress' class="badge badge-pill badge-warning"></span>
-      </li>
-      <li class="active">
-        <i class="fas fa-home"></i>
-        Done <span id='sbDone' class="badge badge-pill badge-success"></span>
-      </li>
-
-    </ul>
-    <button class="btn btn-sm btn-outline-secondary" type="button" id='logout'>Logout</button>
-  </nav>
-
-  <!--Close Sidebar-->
-
 
   <div class="container">
-    <div class="row d-flex justify-content-center">
+    <div class="row">
+      <!-- SIDEBAR-->
+      <div id="sidebar" class="col-sm-3 col-md-12 sidebar">
+        <div class="sidebar-header d-flex flex-column align-items-center ">
+          <img src="./assets/userAvatar.png" alt="userAvatar">
+          <h3 id='sbUserName'></h3>
+          <strong>---</strong>
+        </div>
+        <div class="col-12 sidebar-body">
+          <ul class="list">
+            <li class="projectInfo">
+              <i class="fas fa-list"></i>
+              Total projects <span id='sbTotalProjects' class="badge badge-pill badge-primary"></span>
+            </li>
+            <li class="projectInfo">
+              <i class="fas fa-ban"></i>Not started <span id='sbNotStarted'
+                class="badge badge-pill badge-danger"></span>
+            </li>
+            <li class="projectInfo">
+              <i class="fas fa-chart-line"></i>
+              In progress <span id='sbInProgress' class="badge badge-pill badge-warning"></span>
+            </li>
+            <li class="projectInfo">
+              <i class="fas fa-check-circle"></i>
+              Done <span id='sbDone' class="badge badge-pill badge-success"></span>
+            </li>
+
+          </ul>
+          <div class="col-12">
+            <button type="button" class='btn sm-btn btn-outline-light' id='newProject'>Create a New Project</button>
+          </div>
+        </div>
+      </div>
+
+      <!--Close Sidebar-->
+
+
+
+
+    </div>
+
+
+    <div class="row d-flex justify-content-center offset-1">
       <div id="alerts"></div>
       <div id="login" class="col-8 mt-3">
         <form id="loginUser">
@@ -91,17 +102,26 @@
         </form>
         <a href="#" id="goToLogin">Do you have an account?</a>
       </div>
-      <div class="col-6">
-        <button type="button" class='btn btn-primary' id='newProject'>Create a New Project</button>
-      </div>
+
       <div class="col-10 align-content-center">
         <div class="col-8 offset-3 mt-3 ">
           <form id="createProject">
+            <h1>Project Creator</h1>
             <div class="form-group mt-3">
               <label for="projectName">Project Name</label>
               <input type="text" name="projectTitle" id="projectName" class="form-control"
                 placeholder="Enter the project title ">
             </div>
+
+
+            <div class="input-group mb-3 datePicker">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"> <i class="fa fa-calendar"></i> </span>
+              </div>
+              <input id='datePicker' type="text" class="form-control" name="datePicker" aria-label="search"
+                aria-describedby="basic-addon1">
+            </div>
+
             <div class="form-group">
               <label for="projectDescription">Project Description</label>
               <textarea name="projectDescription" id="projectDescription" rows="10" class="form-control"
@@ -115,9 +135,17 @@
           </form>
 
           <form id="editProject">
+            <h1>Project Editor</h1>
             <div class="form-group">
               <label for="editProjectName">Project Name</label>
               <input type="text" name="editProjectTitle" id="editProjectName" class="form-control">
+            </div>
+            <div class="input-group mb-3 datePicker">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"> <i class="fa fa-calendar"></i> </span>
+              </div>
+              <input id='editDatePicker' type="text" class="form-control" name="editDatePicker" aria-label="search"
+                aria-describedby="basic-addon1">
             </div>
             <div class="form-group">
               <label for="editProjectDescription">Project Description</label>
@@ -125,7 +153,6 @@
                 class="form-control"></textarea>
             </div>
             <div class="buttons">
-
               <button type="button" id='' class="btn btn-success editButton">Edit the project</button>
               <button type="button" id='cancelEdit' class="btn btn-danger ">Cancel</button>
             </div>
@@ -133,7 +160,18 @@
 
         </div>
         <div id="projects" class=" col-12">
-          <table class="table">
+
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"> <i class="fa fa-search"></i> </span>
+            </div>
+            <input id="searchProjectInput" type="text" class="form-control" placeholder="Search" aria-label="search"
+              aria-describedby="basic-addon1">
+          </div>
+
+
+          <table class="table" id='tableProjects'>
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -185,7 +223,9 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <script src="js/ajaxActions.js"></script>
   <script src="js/index.js"></script>
 </body>
 
